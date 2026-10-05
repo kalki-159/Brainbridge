@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainBridge | Connect. Learn. Collaborate.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="brand">
+        <div class="brand-mark">B</div>
+        <div>
+            <h1>BrainBridge</h1>
+            <span>Connect. Learn. Collaborate.</span>
+        </div>
+    </div>
+    <div id="sessionArea">
+        <button class="btn secondary" onclick="showSection('login')">Login</button>
+        <button class="btn primary" onclick="showSection('register')">Join BrainBridge</button>
+    </div>
+</header>
+
+<main>
+    <section id="home" class="hero section">
+        <div class="hero-copy">
+            <p class="eyebrow">PEOPLE • SKILLS • IDEAS</p>
+            <h2>Find the people who complete your skill set.</h2>
+            <p class="hero-text">
+                BrainBridge connects people through complementary skills, learning goals,
+                interests and collaboration needs — not just similar interests.
+            </p>
+            <div class="hero-actions">
+                <button class="btn primary large" onclick="showSection('register')">Create your profile</button>
+                <button class="btn secondary large" onclick="showSection('login')">I already have an account</button>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="match-pill">Potential Match · 92%</div>
+            <div class="person-row">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Java Learner</strong>
+                    <p>Knows Java · Wants Spring Boot</p>
+                </div>
+            </div>
+            <div class="bridge">↕</div>
+            <div class="person-row">
+                <div class="avatar second">S</div>
+                <div>
+                    <strong>Spring Boot Mentor</strong>
+                    <p>Knows Spring Boot · Wants Java</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="section form-section hidden">
+        <div class="form-card">
+            <p class="eyebrow">CREATE PROFILE</p>
+            <h2>Join BrainBridge</h2>
+            <p class="muted">Tell us what you know and what you want to learn.</p>
+
+            <form id="registerForm">
+                <input name="name" placeholder="Full name" required>
+                <input name="email" type="email" placeholder="Email" required>
+                <input name="password" type="password" placeholder="Password (6+ characters)" minlength="6" required>
+                <textarea name="bio" placeholder="Short bio"></textarea>
+                <input name="skills" placeholder="Skills (e.g. Java, SQL, HTML)">
+                <input name="learningGoals" placeholder="Learning goals (e.g. Spring Boot, Python)">
+                <input name="interests" placeholder="Interests (e.g. AI, Web Development)">
+                <input name="collaborationPreferences" placeholder="Collaboration preferences (e.g. Projects, Study)">
+                <button class="btn primary full" type="submit">Create account</button>
+            </form>
+            <p class="switch-text">Already registered? <button class="link-btn" onclick="showSection('login')">Login</button></p>
+        </div>
+    </section>
+
+    <section id="login" class="section form-section hidden">
+        <div class="form-card small-card">
+            <p class="eyebrow">WELCOME BACK</p>
+            <h2>Login to BrainBridge</h2>
+
+            <form id="loginForm">
+                <input name="email" type="email" placeholder="Email" required>
+                <input name="password" type="password" placeholder="Password" required>
+                <button class="btn primary full" type="submit">Login</button>
+            </form>
+            <p class="switch-text">New here? <button class="link-btn" onclick="showSection('register')">Create an account</button></p>
+        </div>
+    </section>
+
+    <section id="dashboard" class="section hidden">
+        <div class="dashboard-head">
+            <div>
+                <p class="eyebrow">YOUR BRAINBRIDGE</p>
+                <h2 id="welcomeTitle">Welcome</h2>
+                <p class="muted">Discover people who can complement your skills and goals.</p>
+            </div>
+            <button class="btn secondary" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="panel profile-panel">
+                <h3>Your Profile</h3>
+                <div id="profileContent"></div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h3>Potential Matches</h3>
+                        <p class="muted">Ranked using complementary skills and goals.</p>
+                    </div>
+                    <button class="btn secondary small" onclick="loadMatches()">Refresh</button>
+                </div>
+                <div id="matches" class="matches"></div>
+            </div>
+        </div>
+
+        <div class="panel connections-panel">
+            <div class="panel-head">
+                <div>
+                    <h3>Connection Requests</h3>
+                    <p class="muted">Track your collaboration requests.</p>
+                </div>
+                <button class="btn secondary small" onclick="loadConnections()">Refresh</button>
+            </div>
+            <div id="connections"></div>
+        </div>
+    </section>
+
+    <div id="toast" class="toast"></div>
+</main>
+
+<footer>
+    <p>BrainBridge · A peer connection and collaboration platform</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
